@@ -12,7 +12,7 @@ const schema = new Schema({
     },
     slug: { // Ex: NM_Produto: Cadeira gamer => slug: cadeira-gamer
         type: String,
-        required: true,
+        required: [true, 'Necessario definir slug'],
         trim: true,
         index: true,
         unique: true
