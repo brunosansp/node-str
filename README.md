@@ -8,6 +8,6 @@ password: bruno
 
 
 Tools to Management MongoDB
-studio3t.com (EM USO)
-robomongo.org
+studio3t.com 
+Robo 3T (robomongo.org) => EM USO
 ````

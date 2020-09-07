@@ -1,9 +1,10 @@
 'use strict'
 
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+// const Schema = mongoose.Schema
+const productSchema = new mongoose.Schema({
 
-const schema = new Schema({
+// const schema = new Schema({
     // Não foi colocado id pois o Schema adiciona automaticamente como _id
     title: {
         type: String,
@@ -36,4 +37,4 @@ const schema = new Schema({
     }]
 })
 
-module.exports = mongoose.model('Product', schema)
+module.exports = mongoose.model('Product', productSchema)
