@@ -1,9 +1,7 @@
 'use strict';
 
-const Product = require("../models/product");
 const ValidationContract = require("../validators/fluent-validator");
-const repository = require("../repositories/product-repository");
-
+const repository = require('../repositories/product-repository');
 
 exports.get = (req, res, next) => {
   repository
