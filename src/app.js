@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const indexRoute = require("./routes/index-route");
 const productRoute = require("./routes/product-route");
 const customerRoute = require("./routes/customer-route");
+const orderRoute = require("./routes/order-route");
+
 
 // Conecta ao banco de dados
 mongoose.connect('mongodb+srv://bruno:bruno@nodestr.tqrnr.azure.mongodb.net/nodestr?retryWrites=true&w=majority',
@@ -29,5 +31,7 @@ mongoose.connect('mongodb+srv://bruno:bruno@nodestr.tqrnr.azure.mongodb.net/node
 app.use("/", indexRoute);
 app.use("/products", productRoute);
 app.use("/customers", customerRoute);
+app.use("/orders", orderRoute);
+
 
 module.exports = app;

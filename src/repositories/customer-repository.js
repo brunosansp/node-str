@@ -1,7 +1,11 @@
 'use strict'
 
-const mongoose = require('mongoose');
 const Customer = require('../models/customer')
+
+exports.get = async () => {
+    const res = await Customer.find();
+    return res;
+}
 
 exports.create = (data) => {
     var customer = new Customer(data);
