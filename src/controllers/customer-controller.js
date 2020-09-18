@@ -2,17 +2,18 @@
 
 const ValidationContract = require('../validators/fluent-validator');
 const repository = require('../repositories/customer-repository');
+const md5 = require('md5');
 
 exports.get = (req, res, next) => {
     repository
-      .get()
-      .then((data) => {
-        res.status(200).send(data);
-      })
-      .catch((e) => {
-        res.status(400).send(e);
-      });
-  };
+        .get()
+        .then((data) => {
+            res.status(200).send(data);
+        })
+        .catch((e) => {
+            res.status(400).send(e);
+        });
+};
 
 exports.post = async (req, res, next) => {
     // Validation
@@ -33,7 +34,11 @@ exports.post = async (req, res, next) => {
     }
 
     try {
-        await repository.create(req.body)
+        await repository.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: md5(req.body.password + global.SALT_key)
+        })
         res.status(201).send({
             message: "Cliente cadastrado com sucesso!",
         });

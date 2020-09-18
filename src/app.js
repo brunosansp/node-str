@@ -16,6 +16,7 @@ const orderRoute = require("./routes/order-route");
 
 
 // Conecta ao banco de dados
+// mongoose.connect(config.connectionString);
 mongoose.connect('mongodb+srv://bruno:bruno@nodestr.tqrnr.azure.mongodb.net/nodestr?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
