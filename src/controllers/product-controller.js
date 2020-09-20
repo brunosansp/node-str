@@ -2,6 +2,7 @@
 
 const ValidationContract = require("../validators/fluent-validator");
 const repository = require('../repositories/product-repository');
+const azure = require ('azure-storage');
 
 exports.get = (req, res, next) => {
   repository
