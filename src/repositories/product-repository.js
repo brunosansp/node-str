@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 // const Product = mongoose.model('Product');
-const Product = require('../models/Product')
+const Product = require('../models/product')
 
 
 exports.get = () => {

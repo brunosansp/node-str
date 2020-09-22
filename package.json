@@ -27,7 +27,8 @@
     "jsonwebtoken": "^7.4.0",
     "md5": "^2.3.0",
     "mongoose": "^5.10.5",
-    "sendgrid": "^2.0.0"
+    "sendgrid": "^2.0.0",
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
