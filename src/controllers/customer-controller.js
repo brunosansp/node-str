@@ -59,6 +59,41 @@ exports.post = async (req, res, next) => {
     }
 };
 
+exports.refreshToken = async (req, res, next) => {
+    try {
+        // Recupera o token
+        const token = req.body.token || req.query.token || req.headers['x-access-token']
+        // Decodifica o token
+        const data = await authService.decodeToken(token);
+
+        const customer = await repository.getById(data.id);
+
+        if (!customer) {
+            res.status(404).send({
+                message: 'Cliente não encontrado.'
+            });
+            return;
+        }
+
+        const tokenData = await authService.generateToken({
+            id: customer._id,
+            email: customer.email,
+            name: customer.name
+        });
+        res.status(201).send({
+            token: token,
+            data: {
+                email: customer.email,
+                name: customer.name
+            }
+        });
+    } catch (e) {
+        res.status(500).send({
+            message: "ERRO :: Falha ao processar sua requisição.",
+        });
+    }
+};
+
 exports.authenticate = async (req, res, next) => {
     try {
         const customer = await repository.authenticate({
@@ -74,6 +109,7 @@ exports.authenticate = async (req, res, next) => {
         }
 
         const token = await authService.generateToken({
+            id: customer._id,
             email: customer.email,
             name: customer.name
         });
