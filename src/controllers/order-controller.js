@@ -14,7 +14,6 @@ exports.get = (req, res, next) => {
 };
 
 exports.post = async (req, res, next) => {
-    console.log(req)
     try {
         // Recupera o token
         const token = req.body.token || req.query.token || req.headers['x-access-token']
